@@ -1,0 +1,339 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Sync with backend &mdash; Gohan 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/gohan.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Gohan 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Policy" href="policy.html"/>
+        <link rel="prev" title="Database" href="database.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+<body class="wy-body-for-nav" role="document">
+  <header class="gohan_header">
+    <div class="logo"><a href="/"><img width="103" height="30" src="_static/img/gh-logo-color.png"></a></div>
+    <div class="nav">
+      <ul>
+        <li><a href="https://github.com/cloudwan/gohan#getting-started">Getting started</a></li>
+        <li><a href="http://cloudwan.github.io/gohan/">Docs</a></li>
+        <li><a href="https://github.com/cloudwan/gohan" style="font-weight: bold">
+          <span class="fa fa-github"></span>
+          Github</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gohan
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Gohan Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Gohan Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Sync with backend</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#state-updates">State updates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monitoring-updates">Monitoring updates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="policy.html">Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">Namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking Tips</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Gohan</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Sync with backend</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/sync.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="sync-with-backend">
+<h1>Sync with backend<a class="headerlink" href="#sync-with-backend" title="Permalink to this headline">¶</a></h1>
+<p>Gohan stores an event log recording create, update and delete database operations.
+This is done in the database transaction, so we can assume that
+this event log data is consistent with the resource data.</p>
+<p>The event log data contains the following information. (see schema in gohan.json)</p>
+<ul class="simple">
+<li>id &#8211; an unique ID of the event</li>
+<li>type &#8211; the type of the event</li>
+<li>path &#8211; the path of the resource related to the event</li>
+<li>timestamp &#8211; the time at which the event occurred</li>
+<li>version &#8211; the version of the resource after this event occurred</li>
+<li>body &#8211; the contents of the resource after this event occurred</li>
+</ul>
+<p>The Gohan server will select one master node using the etcd backend CAS API.
+Only the master node will then poll the event log table, pushing to the backend.</p>
+<p>We may support mysql binlog api for better performance in future.</p>
+<div class="section" id="state-updates">
+<span id="subsection-state-update"></span><h2>State updates<a class="headerlink" href="#state-updates" title="Permalink to this headline">¶</a></h2>
+<p>Gohan will keep track of the state version of any resource associated to
+a schema with metadata containing the key <code class="docutils literal"><span class="pre">state_versioning</span></code> set to
+<code class="docutils literal"><span class="pre">true</span></code>. In such a case Gohan will remember the config version and
+the state version of the resource. During creation the config version of
+such a resource will be set to <code class="docutils literal"><span class="pre">1</span></code>. On delete and update the version is
+bumped by one. The state version is <code class="docutils literal"><span class="pre">0</span></code> originally and later read from
+the sync backend and updated asynchronously. Both the versions are returned
+in GET requests, together with additional information about the state.</p>
+<p>For example say a simplistic resource with the following schema is created:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Just a named object</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">named_object</span>
+  <span class="l-Scalar-Plain">parent</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+  <span class="l-Scalar-Plain">metadata</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">state_versioning</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">named_object</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">named_object</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v1.0</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ID</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+    <span class="l-Scalar-Plain">properties_order</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span>
+    <span class="l-Scalar-Plain">required</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Named Object</span>
+</pre></div>
+</div>
+<p>and the <code class="docutils literal"><span class="pre">name</span></code> is set to <code class="docutils literal"><span class="pre">Alice</span></code>. Then Gohan, through the standard event sync,
+writes the following JSON object to the backend under the key
+<code class="docutils literal"><span class="pre">config/v1.0/named_object/someGeneratedUuid</span></code>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;someGeneratedUuid&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Alice&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="mi">1</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A worker program might now read this information, create a corresponding
+southbound resource and write the following to the backend under the key
+<code class="docutils literal"><span class="pre">state/v1.0/named_object/someGeneratedUuid</span></code>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;error&quot;</span><span class="o">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;state&quot;</span><span class="o">:</span> <span class="s2">&quot;Alice exists&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Gohan will read this information and update the database accordingly.</p>
+<p>Any state updates made when the state version already equals the config version
+will be ignored.</p>
+</div>
+<div class="section" id="monitoring-updates">
+<h2>Monitoring updates<a class="headerlink" href="#monitoring-updates" title="Permalink to this headline">¶</a></h2>
+<p>After a resource has been created in the southbound, one might monitor its
+status. This is done using a very similar approach to status updates.
+Monitoring updates the <code class="docutils literal"><span class="pre">monitoring</span></code> field in the database, which is returned
+together with the rest of the state.</p>
+<p>A continuation of the above example follows. After the resource has been created
+in the southbound a worker program might monitor its status and then write
+the result of this monitoring under the key
+<code class="docutils literal"><span class="pre">monitoring/v1.0/named_object/someGeneratedUuid</span></code> as the following JSON:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;version&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>
+  <span class="s2">&quot;monitoring&quot;</span><span class="o">:</span> <span class="s2">&quot;Alice is well&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Gohan will read this information and update the database accordingly.</p>
+<p>Any monitoring updates made when the state version does not yet equal
+the config version or the version in the JSON data doesn&#8217;t match with
+the config version will be ignored.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="policy.html" class="btn btn-neutral float-right" title="Policy" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="database.html" class="btn btn-neutral" title="Database" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 NTT Innovation Institute, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

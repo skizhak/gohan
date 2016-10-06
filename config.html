@@ -1,0 +1,658 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Configuration &mdash; Gohan 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/gohan.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Gohan 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Gohan Schema" href="schema.html"/>
+        <link rel="prev" title="Installation" href="installation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+<body class="wy-body-for-nav" role="document">
+  <header class="gohan_header">
+    <div class="logo"><a href="/"><img width="103" height="30" src="_static/img/gh-logo-color.png"></a></div>
+    <div class="nav">
+      <ul>
+        <li><a href="https://github.com/cloudwan/gohan#getting-started">Getting started</a></li>
+        <li><a href="http://cloudwan.github.io/gohan/">Docs</a></li>
+        <li><a href="https://github.com/cloudwan/gohan" style="font-weight: bold">
+          <span class="fa fa-github"></span>
+          Github</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gohan
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#include">Include</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-value">Environment Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema">Schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#keystone">Keystone</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cors">CORS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#https">HTTPS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#path">Path</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#extension">Extension</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#graceful-shutdown-and-restart">Graceful Shutdown and Restart</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Gohan Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Gohan Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sync.html">Sync with backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="policy.html">Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">Namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking Tips</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Gohan</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/config.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<p>In this section we will describe how to configure
+gohan server cli.</p>
+<dl class="docutils">
+<dt>gohan server command takes &#8220;&#8211;config-file&#8221; parameter to specify</dt>
+<dd>configuraion file.</dd>
+</dl>
+<div class="highlight-shell"><div class="highlight"><pre>gohan server --config-file etc/gohan.yaml
+</pre></div>
+</div>
+<p>Note that there are some example configuraions in the etc directory.
+Gohan server configuration is written in YAML format.
+(For YAML specification, see <a class="reference external" href="http://yaml.org/">http://yaml.org/</a>)</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1">#######################################################</span>
+<span class="c1">#  Gohan API Server example configuraion</span>
+<span class="c1">######################################################</span>
+
+<span class="l-Scalar-Plain">include</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">gohan.d</span>
+<span class="c1"># database connection configuraion</span>
+<span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span>
+    <span class="c1"># sqlite3 and mysql supported</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;sqlite3&quot;</span>
+    <span class="c1"># connection string</span>
+    <span class="c1"># it is file path for yaml, json and sqlite3 backend</span>
+    <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/test.db&quot;</span>
+    <span class="c1"># please set no_init true in the production env, so that gohan don&#39;t initialize table</span>
+    <span class="c1"># no_init: true</span>
+    <span class="l-Scalar-Plain">initial_data</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;yaml&quot;</span>
+          <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/examples/heat_template.yaml&quot;</span>
+<span class="c1"># schema path</span>
+<span class="l-Scalar-Plain">schemas</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="s">&quot;./etc/schema/gohan.json&quot;</span>
+<span class="c1"># listen address for gohan</span>
+<span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="s">&quot;:9090&quot;</span>
+<span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+  <span class="l-Scalar-Plain">cert_file</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/cert.pem&quot;</span>
+  <span class="l-Scalar-Plain">key_file</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/key.pem&quot;</span>
+<span class="c1"># document root of gohan API server</span>
+<span class="c1"># Note: only static and schema directoriy will be served</span>
+<span class="l-Scalar-Plain">document_root</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc&quot;</span>
+<span class="c1"># list of etcd backend servers</span>
+<span class="l-Scalar-Plain">etcd</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="s">&quot;http://127.0.0.1:4001&quot;</span>
+<span class="c1"># keystone configuraion</span>
+<span class="l-Scalar-Plain">keystone</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">use_keystone</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="l-Scalar-Plain">fake</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+    <span class="l-Scalar-Plain">auth_url</span><span class="p-Indicator">:</span> <span class="s">&quot;http://localhost:35357/v2.0&quot;</span>
+    <span class="l-Scalar-Plain">user_name</span><span class="p-Indicator">:</span> <span class="s">&quot;admin&quot;</span>
+    <span class="l-Scalar-Plain">tenant_name</span><span class="p-Indicator">:</span> <span class="s">&quot;admin&quot;</span>
+    <span class="l-Scalar-Plain">password</span><span class="p-Indicator">:</span> <span class="s">&quot;gohan&quot;</span>
+<span class="c1"># CORS (Cross-origin resource sharing (CORS)) configuraion for javascript based client</span>
+<span class="l-Scalar-Plain">cors</span><span class="p-Indicator">:</span> <span class="s">&quot;*&quot;</span>
+
+<span class="c1"># allowed levels  &quot;CRITICAL&quot;, &quot;ERROR&quot;, &quot;WARNING&quot;, &quot;NOTICE&quot;, &quot;INFO&quot;, &quot;DEBUG&quot;,</span>
+<span class="l-Scalar-Plain">logging</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">stderr</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DEBUG</span>
+    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">INFO</span>
+        <span class="l-Scalar-Plain">filename</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">./gohan.log</span>
+</pre></div>
+</div>
+<div class="section" id="include">
+<h2>Include<a class="headerlink" href="#include" title="Permalink to this headline">¶</a></h2>
+<p>You can include config yaml files from specified dirs
+Note that overwrapped configuraion will be overrides by configuration loaded
+later, so we don&#8217;t recommend to have duplicated config file key in multiple files.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">include</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">gohan.d</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-value">
+<h2>Environment Value<a class="headerlink" href="#environment-value" title="Permalink to this headline">¶</a></h2>
+<p>You can use Environment value in the configuraion.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="p-Indicator">{{</span> <span class="nv">.GOHAN_IP</span><span class="p-Indicator">}}</span><span class="l-Scalar-Plain">:{{ .GOHAN_PORT}}</span>
+</pre></div>
+</div>
+<p>Note you need to use {{ and }}, and you need to put . before
+your env key.
+We are using golang text template package, so please take a
+look more at <a class="reference external" href="https://golang.org/pkg/text/template/">https://golang.org/pkg/text/template/</a></p>
+</div>
+<div class="section" id="database">
+<h2>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h2>
+<p>database is backend database configuraion.
+You can select from sqlite3 and mysql.
+Note that yaml and json is only for development purpose.</p>
+<p>This is a sample database configuraion for sqlite3.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># database connection configuraion</span>
+<span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;sqlite3&quot;</span>
+    <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;./sqlite3.db&quot;</span>
+</pre></div>
+</div>
+<p>Note that you need to initialize database using gohan init-db CLI.</p>
+<p>gohan init-db takes following parameters.</p>
+<ul class="simple">
+<li>&#8211;database_type, &#8211;dt &#8216;sqlite3&#8217;      Backend datebase type</li>
+<li>&#8211;database, -d &#8216;gohan.db&#8217;            DB Connection String</li>
+<li>&#8211;schema, -s &#8216;../schema/gohan.json&#8217;  Schema Def</li>
+<li>&#8211;delete-on-create If selected, existing database will be dropped</li>
+<li>&#8211;cascade If selected, FOREIGN KEYs will be created with CASCADE ON DELETE</li>
+</ul>
+<p>This is example init database command for sqlite3 database</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">gohan init-db -s schema/gohan.json -d sqlite3.db</span>
+</pre></div>
+</div>
+<p>This is a sample database configuraion for mysql.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="c1"># database connection configuraion</span>
+<span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;mysql&quot;</span>
+    <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;root:gohan@127.0.0.1/gohan&quot;</span>
+</pre></div>
+</div>
+<p>This is example init database command for sqlite3 database</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">gohan init-db -s schema/gohan.json -dt mysql -d &quot;root:gohan/gohan&quot;</span>
+</pre></div>
+</div>
+<p>You can also specify initial_data for static configs.
+gohan server registers content of data on startup time.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;yaml&quot;</span>
+    <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/example.yaml&quot;</span>
+    <span class="l-Scalar-Plain">initial_data</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;yaml&quot;</span>
+          <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/examples/initial_datayaml&quot;</span>
+</pre></div>
+</div>
+<p>Gohan policy determining what to do when there is existing database, can be specified
+with drop_on_create option. If it&#8217;s set to true, database will be dropped before
+initialization.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;yaml&quot;</span>
+    <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/example.yaml&quot;</span>
+    <span class="l-Scalar-Plain">drop_on_create</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+<p>Cascade deletion, i.e. creating FOREING KEYs with CASCADE ON DELETE,  can be
+activated with cascade switch.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">database</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="s">&quot;yaml&quot;</span>
+    <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/example.yaml&quot;</span>
+    <span class="l-Scalar-Plain">cascade</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="schema">
+<h2>Schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
+<p>Gohan works based on schema definitions.
+You should specify list of schema file in the configuraion.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">schemas</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="s">&quot;./etc/schema/gohan.json&quot;</span>
+</pre></div>
+</div>
+<p>You can specify your own schema here. You can also use gohan meta-schema.
+Meta-schema defines gohan schema itself.
+You can see it on etc/schema/gohan.json.
+When you have meta-schema in the schema configuraion, you can use gohan
+meta-schema API and schema editor in webui.</p>
+</div>
+<div class="section" id="keystone">
+<h2>Keystone<a class="headerlink" href="#keystone" title="Permalink to this headline">¶</a></h2>
+<p>Gohan support OpenStack keystone authentication backend.
+(see <a class="reference external" href="http://docs.openstack.org/developer/keystone/">http://docs.openstack.org/developer/keystone/</a> )</p>
+<ul>
+<li><p class="first">use_keystone: boolean</p>
+<p>use keystone or not</p>
+</li>
+<li><p class="first">fake: boolean</p>
+<p>use fake keystone server for testing or not</p>
+</li>
+<li><p class="first">auth_url</p>
+<p>keytone admin URL</p>
+</li>
+<li><p class="first">user_name</p>
+<p>service user name</p>
+</li>
+<li><p class="first">tenant_name</p>
+<p>service tenant_name (needed for keystone v2.0 api)</p>
+</li>
+<li><p class="first">domain</p>
+<p>service domain name (needed for keystone v3.0 api)</p>
+</li>
+<li><p class="first">password</p>
+<p>password for service user</p>
+</li>
+<li><p class="first">version</p>
+<p>v2.0 or v3 is suppoted</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">keystone</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">use_keystone</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="l-Scalar-Plain">fake</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+    <span class="l-Scalar-Plain">auth_url</span><span class="p-Indicator">:</span> <span class="s">&quot;http://localhost:35357/v2.0&quot;</span>
+    <span class="l-Scalar-Plain">user_name</span><span class="p-Indicator">:</span> <span class="s">&quot;admin&quot;</span>
+    <span class="l-Scalar-Plain">tenant_name</span><span class="p-Indicator">:</span> <span class="s">&quot;admin&quot;</span>
+    <span class="l-Scalar-Plain">password</span><span class="p-Indicator">:</span> <span class="s">&quot;gohan&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cors">
+<h2>CORS<a class="headerlink" href="#cors" title="Permalink to this headline">¶</a></h2>
+<p>Gohan supports Cross-Origin Resource Sharing (CORS) for supporting
+javascript webui without proxy server.
+You need to specify allowd domain pattern in cors parameter.
+Note: DO NOT USE * configuraion in production deployment.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">cors</span><span class="p-Indicator">:</span> <span class="s">&quot;*&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="logging">
+<h2>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h2>
+<p>You can define logging output in logging configuraion.</p>
+<p>Logging level can be specified per log and per module in log. If module is not specified
+in &#8220;modules&#8221;, value from &#8220;level&#8221; is applied.</p>
+<p>Allowed log levels: &#8220;CRITICAL&#8221;, &#8220;ERROR&#8221;, &#8220;WARNING&#8221;, &#8220;NOTICE&#8221;, &#8220;INFO&#8221;, &#8220;DEBUG&#8221;,</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">logging</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">stderr</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DEBUG</span>
+    <span class="l-Scalar-Plain">file</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+        <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">INFO</span>
+        <span class="l-Scalar-Plain">modules</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">gohan.db.sql</span>
+              <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">DEBUG</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">gohan.sync.etcd</span>
+              <span class="l-Scalar-Plain">level</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">CRITICAL</span>
+        <span class="l-Scalar-Plain">filename</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">./gohan.log</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="https">
+<h2>HTTPS<a class="headerlink" href="#https" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">enabled</p>
+<p>You can enable HTTPS support by setting this flag to <code class="docutils literal"><span class="pre">true</span></code>.
+Disabling this option will cause Gohan to fallback to HTTP.</p>
+</li>
+<li><p class="first">cert_file</p>
+<p>Location of X509 certificate file.
+e.g. <code class="docutils literal"><span class="pre">&quot;./etc/cert.pem&quot;</span></code></p>
+</li>
+<li><p class="first">key_file</p>
+<p>Location of key file matching with certificate.
+e.g. <code class="docutils literal"><span class="pre">&quot;./etc/key.pem&quot;</span></code></p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">tls</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">enabled</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+  <span class="l-Scalar-Plain">cert_file</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/cert.pem&quot;</span>
+  <span class="l-Scalar-Plain">key_file</span><span class="p-Indicator">:</span> <span class="s">&quot;./etc/key.pem&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="path">
+<h2>Path<a class="headerlink" href="#path" title="Permalink to this headline">¶</a></h2>
+<p>By default, any path get considerted as file.
+You can also specify schemes including <a class="reference external" href="file://">file://</a>, <a class="reference external" href="http://">http://</a>, <a class="reference external" href="https://">https://</a> and embed://.
+For embed scheme, you can read embedded data in gohan binary.
+Currenlty, contents under etc/schema and etc/extentions are embedded.</p>
+</div>
+<div class="section" id="extension">
+<h2>Extension<a class="headerlink" href="#extension" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>enable extension</li>
+</ul>
+<p>You can select extension types you use.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">extension</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">javascript</span>
+  <span class="l-Scalar-Plain">use</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">javascript</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">gohanscript</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">go</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">extension timelimit</p>
+<p>You can make timelimit for extension execution. default is 30 sec</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">extension</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">timelimit</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">30</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">extension npm_path</p>
+<p>You can set npm_path for extensions. It should point to directory
+where node_modules are put. Default is current working directory.</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">extension</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">npm_path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">address</p>
+<p>address to bind gohan-sever.
+eg. 127.0.0.1:9090, 0.0.0.0:9090 or just :9090</p>
+</li>
+<li><p class="first">document_root</p>
+<p>Clients such as webui needs gohan-meta-schema file. We will serve the file from
+configured document_root.</p>
+</li>
+<li><p class="first">etcd</p>
+<p>list of etcd backend.</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">etcd</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="s">&quot;http://192.0.0.1:4001&quot;</span>
+    <span class="p-Indicator">-</span> <span class="s">&quot;http://192.0.0.2:4001&quot;</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">run job on update from etcd</p>
+<p>You can run extension on update event on etcd using
+sync://{{etcd_path}}.</p>
+</li>
+</ul>
+<p>This is a sample configuraion.</p>
+<ul class="simple">
+<li>watch/keys  list of watched keys in etcd. This will be done recursively.</li>
+<li>events list of event we invoke extension</li>
+<li>worker_count: number of concurrent execution tasks</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">watch</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">keys</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">v2.0</span>
+    <span class="l-Scalar-Plain">events</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">v2.0/servers/</span>
+    <span class="l-Scalar-Plain">worker_count</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">4</span>
+</pre></div>
+</div>
+<p>WARNING: The value of watched etcd keys must be a JSON dictionary.</p>
+<ul>
+<li><p class="first">amqp</p>
+<p>You can listen notification event from openstack components using
+amqp. You need to specify listen queues and events.</p>
+<p>You can also run extension for amqp based event specifying path for
+amqp://{{event_type}}.</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">amqp</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">connection</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">amqp://guest:guest@172.16.25.130:5672/</span>
+    <span class="l-Scalar-Plain">queues</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">notifications.info</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">notifications.error</span>
+    <span class="l-Scalar-Plain">events</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">orchestration.stack</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>snmp</li>
+</ul>
+<blockquote>
+<div>You can listen snmp trap, and execute extesion for that trap.
+extension path should be <a class="reference external" href="snmp://">snmp://</a></div></blockquote>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">snmp</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">address</span><span class="p-Indicator">:</span> <span class="s">&quot;localhost:8888&quot;</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">cron</p>
+<p>You can pediorically execute cron job using configuraion.
+extension path should be specified in the path.</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">cron</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">cron://cron_job_sample</span>
+      <span class="l-Scalar-Plain">timing</span><span class="p-Indicator">:</span> <span class="s">&quot;*/5</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*&quot;</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">Job queue</p>
+<p>Gohan uses background job queue &amp; workers.
+You can decide how many worker can run concurrently.</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">workers</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">100</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">schema editor</p>
+<p>You can use gohan server as a schema editor if you specify editable_schema yaml file.
+Gohan updates this file based on scheam REST API call.</p>
+</li>
+</ul>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">editable_schema</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">./example_schema.yaml</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="graceful-shutdown-and-restart">
+<h2>Graceful Shutdown and Restart<a class="headerlink" href="#graceful-shutdown-and-restart" title="Permalink to this headline">¶</a></h2>
+<p>Gohan support graceful shutdown and restart.</p>
+<p>For graceful shutdown, send SIGTERM for gohan process.
+For graceful restart, you need to use server-starter utility.</p>
+<div class="highlight-shell"><div class="highlight"><pre>gohan glace-server --config-file etc/gohan.yaml
+</pre></div>
+</div>
+<p>or you can use start_server utility</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="c"># Installation</span>
+go get github.com/lestrrat/go-server-starter/cmd/start_server
+
+<span class="c"># Run gohan server with start_server utility</span>
+start_server --port <span class="m">9091</span> -- gohan server --config-file etc/gohan.yaml
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="schema.html" class="btn btn-neutral float-right" title="Gohan Schema" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral" title="Installation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 NTT Innovation Institute, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

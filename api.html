@@ -1,0 +1,435 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>API &mdash; Gohan 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/gohan.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Gohan 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Database" href="database.html"/>
+        <link rel="prev" title="Gohan Commands" href="commands.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+<body class="wy-body-for-nav" role="document">
+  <header class="gohan_header">
+    <div class="logo"><a href="/"><img width="103" height="30" src="_static/img/gh-logo-color.png"></a></div>
+    <div class="nav">
+      <ul>
+        <li><a href="https://github.com/cloudwan/gohan#getting-started">Getting started</a></li>
+        <li><a href="http://cloudwan.github.io/gohan/">Docs</a></li>
+        <li><a href="https://github.com/cloudwan/gohan" style="font-weight: bold">
+          <span class="fa fa-github"></span>
+          Github</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gohan
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Gohan Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Gohan Commands</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#list">List</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#child-resources-access">Child resources access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create">CREATE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update">Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete">DELETE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-actions">Custom Actions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sync.html">Sync with backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="policy.html">Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">Namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking Tips</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Gohan</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="api">
+<h1>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h1>
+<p>In this section, we show how we generate REST API based on schema.</p>
+<p>&#8220;$plural&#8221;, &#8220;$singular&#8221;, &#8220;$prefix&#8221; and &#8220;$id&#8221; are read directly from schema,
+&#8220;$namespace_prefix&#8221; is computed using namespace information and might be empty
+if schema has no namespace specified.</p>
+<p>Note: An extension computes actual access URL for each resource and substitutes
+prefix property with it during schema listing calls. User can list resources
+using this URL and access a single instance of resource by prepending &#8220;/$id&#8221;
+suffix.</p>
+<div class="section" id="list">
+<h2>List<a class="headerlink" href="#list" title="Permalink to this headline">¶</a></h2>
+<p>List REST API</p>
+<p>List supports pagination by optional GET query parameters <code class="docutils literal"><span class="pre">sort_key</span></code> and <code class="docutils literal"><span class="pre">sort_order</span></code>.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="8%" />
+<col width="10%" />
+<col width="13%" />
+<col width="56%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Query Parameter</th>
+<th class="head">Style</th>
+<th class="head">Type</th>
+<th class="head">Default</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>sort_key</td>
+<td>query</td>
+<td>xsd:string</td>
+<td>id</td>
+<td>Sort key for results</td>
+</tr>
+<tr class="row-odd"><td>sort_order</td>
+<td>query</td>
+<td>xsd:string</td>
+<td>asc</td>
+<td>Sort order - allowed values are <code class="docutils literal"><span class="pre">asc</span></code> or <code class="docutils literal"><span class="pre">desc</span></code></td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>query</td>
+<td>xsd:int</td>
+<td>0</td>
+<td>Specifies maximum number of results.
+Unlimited for non-positive values</td>
+</tr>
+<tr class="row-odd"><td>offset</td>
+<td>query</td>
+<td>xsd:int</td>
+<td>0</td>
+<td>Specifies number of results to be skipped</td>
+</tr>
+<tr class="row-even"><td>&lt;parent&gt;_id</td>
+<td>query</td>
+<td>xsd:string</td>
+<td>N/A</td>
+<td>When resources which have a parent are listed,
+&lt;parent&gt;_id can be specified to show only parent&#8217;s children.</td>
+</tr>
+<tr class="row-odd"><td>&lt;property_id&gt;</td>
+<td>query</td>
+<td>xsd:string</td>
+<td>N/A</td>
+<td>filter result by property (exact match). You can use multiple filters.</td>
+</tr>
+</tbody>
+</table>
+<p>When specified query parameters are invalid, server will return HTTP Status Code <code class="docutils literal"><span class="pre">400</span></code> (Bad Request)
+with error message explaining the problem.</p>
+<p>To make navigation easier, each <code class="docutils literal"><span class="pre">List</span></code> response contains additional header <code class="docutils literal"><span class="pre">X-Total-Count</span></code>
+indicating number of all elements without applying <code class="docutils literal"><span class="pre">limit</span></code> or <code class="docutils literal"><span class="pre">offset</span></code>.</p>
+<p>Example:
+GET <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/$plural?sort_key=name&amp;limit=2">http://$GOHAN/[$namespace_prefix/]$prefix/$plural?sort_key=name&amp;limit=2</a></p>
+<p>Response will be</p>
+<p>HTTP Status Code: 200</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;$plural&quot;</span><span class="o">:</span> <span class="p">[</span>
+     <span class="p">{</span>
+       <span class="s2">&quot;attr1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+       <span class="s2">&quot;attr2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+     <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="child-resources-access">
+<h2>Child resources access<a class="headerlink" href="#child-resources-access" title="Permalink to this headline">¶</a></h2>
+<p>Child resources can be accessed in two ways:</p>
+<dl class="docutils">
+<dt>Full path</dt>
+<dd><p class="first">In order to access a child resource in that way, we need to know all it parents.</p>
+<p class="last">e.g. POST <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/[$ancestor_plural/$ancestor_id/]$plural">http://$GOHAN/[$namespace_prefix/]$prefix/[$ancestor_plural/$ancestor_id/]$plural</a></p>
+</dd>
+<dt>Short path</dt>
+<dd><p class="first">If we don&#8217;t know resource full path, it can be accessed with $parent_id.</p>
+<p class="last">e.g. POST <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/$plural">http://$GOHAN/[$namespace_prefix/]$prefix/$plural</a>?$parent_id=&lt;parent_id&gt;</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="get">
+<h2>GET<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h2>
+<p>Show REST API</p>
+<p>GET <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id">http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id</a></p>
+<p>Response will be</p>
+<p>HTTP Status Code: 200</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;$singular&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;attr1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+    <span class="s2">&quot;attr2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create">
+<h2>CREATE<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h2>
+<p>CREATE Resource REST API</p>
+<p>POST <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/$plural/">http://$GOHAN/[$namespace_prefix/]$prefix/$plural/</a></p>
+<p>Input</p>
+<p>Note that input json can only contain
+if you set &#8220;create&#8221; permission for this</p>
+<p>HTTP Status Code: 202</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;$singular&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;attr1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+    <span class="s2">&quot;attr2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Response will be</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;$singular&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;attr1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+    <span class="s2">&quot;attr2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<p>Update Resource REST API</p>
+<p>PUT <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id">http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id</a></p>
+<p>Input</p>
+<p>Note that input json can only contain
+if you set &#8220;update&#8221; permission for this</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;$singular&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;attr1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+    <span class="s2">&quot;attr2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Response will be</p>
+<p>HTTP Status Code: 200</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;$singular&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;attr1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+    <span class="s2">&quot;attr2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete">
+<h2>DELETE<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<p>Delete Resource REST API</p>
+<p>HTTP Status Code: 204</p>
+<p>DELETE <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id">http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id</a></p>
+</div>
+<div class="section" id="custom-actions">
+<h2>Custom Actions<a class="headerlink" href="#custom-actions" title="Permalink to this headline">¶</a></h2>
+<p>Run custom action on a resource</p>
+<p>POST <a class="reference external" href="http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id/$action_path">http://$GOHAN/[$namespace_prefix/]$prefix/$plural/$id/$action_path</a></p>
+<p>Input</p>
+<p>Input json can only contain parameters defined in input schema definition
+It requires &#8220;$action&#8221; allow policy</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;parameter1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+  <span class="s2">&quot;parameter2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Response will be</p>
+<p>HTTP Status Code: 200</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;output1&quot;</span><span class="o">:</span> <span class="nx">XX</span><span class="p">,</span>
+  <span class="s2">&quot;output2&quot;</span><span class="o">:</span> <span class="nx">XX</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="database.html" class="btn btn-neutral float-right" title="Database" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="commands.html" class="btn btn-neutral" title="Gohan Commands" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 NTT Innovation Institute, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

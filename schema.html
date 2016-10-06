@@ -1,0 +1,867 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gohan Schema &mdash; Gohan 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/gohan.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Gohan 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Gohan Commands" href="commands.html"/>
+        <link rel="prev" title="Configuration" href="config.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+<body class="wy-body-for-nav" role="document">
+  <header class="gohan_header">
+    <div class="logo"><a href="/"><img width="103" height="30" src="_static/img/gh-logo-color.png"></a></div>
+    <div class="nav">
+      <ul>
+        <li><a href="https://github.com/cloudwan/gohan#getting-started">Getting started</a></li>
+        <li><a href="http://cloudwan.github.io/gohan/">Docs</a></li>
+        <li><a href="https://github.com/cloudwan/gohan" style="font-weight: bold">
+          <span class="fa fa-github"></span>
+          Github</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gohan
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gohan Schema</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#schemas">Schemas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#schema-inheritance">Schema Inheritance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-string">type string</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-boolean">type boolean</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-integer-or-type-number">type integer or type number</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-array">type array</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#type-object">type object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parent-child-relationship">Parent - child relationship</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-actions-schema">Custom actions schema</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-isolation-level">Custom Isolation Level</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openapi-swagger">OpenAPI / Swagger</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Gohan Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sync.html">Sync with backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="policy.html">Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">Namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking Tips</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Gohan</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Gohan Schema</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/schema.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gohan-schema">
+<h1>Gohan Schema<a class="headerlink" href="#gohan-schema" title="Permalink to this headline">¶</a></h1>
+<p>Gohan server provides REST API based on gohan schema definitions.
+You can write gohan schema using json or YAML format. We will use YAML format in this document because of human reability.</p>
+<p>You can take a look example schema definitions in etc/examples/</p>
+<p>Here is an example defining network and subnet resource.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">schemas</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">network</span>
+  <span class="l-Scalar-Plain">namespace</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">neutron</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">networks</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v2.0</span>
+  <span class="l-Scalar-Plain">metadata</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">template_format</span><span class="p-Indicator">:</span> <span class="s">&quot;template/network.yaml&quot;</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Description</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ID</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">providor_networks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">segmentaion_type</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vlan</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vxlan</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">gre</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+          <span class="l-Scalar-Plain">segmentation_id</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Provider Networks</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">route_targets</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+        <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">RouteTargets</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">tenant_id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Tenant</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="l-Scalar-Plain">propertiesOrder</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">providor_networks</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">route_targets</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">tenant_id</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">network</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Network</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">subnet</span>
+  <span class="l-Scalar-Plain">parent</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">network</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">subnets</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v2.0/neutron</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">cidr</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Cidr</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Description</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">tenant_id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">TenantID</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="l-Scalar-Plain">propertiesOrder</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">cidr</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">tenant_id</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">subnet</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">subnet</span>
+</pre></div>
+</div>
+<div class="section" id="schemas">
+<h2>Schemas<a class="headerlink" href="#schemas" title="Permalink to this headline">¶</a></h2>
+<p>We will have a list of schemas to define a setup resources.
+Each schema will have following properties.</p>
+<ul class="simple">
+<li>id          &#8211; resource id (unique)</li>
+<li>singular    &#8211; singular form of the schema name</li>
+<li>plural      &#8211; plural form of schema name</li>
+<li>title       &#8211; use visible label of resource title</li>
+<li>description &#8211; a description of the schema</li>
+<li>schema      &#8211; json schema</li>
+</ul>
+<p>Schemas might also have any of the following optional properties.</p>
+<ul class="simple">
+<li>parent    &#8211; the id of the parent schema</li>
+<li>on_parent_delete_cascade &#8211; cascading delete when parent resource deleted</li>
+<li>namespace &#8211; resource namespace</li>
+<li>prefix    &#8211; resource path prefix</li>
+<li>metadata  &#8211; application specific schema metadata (object)</li>
+<li>type      &#8211; can be abstract or empty string (see more in schema inheritance)</li>
+<li>extends   &#8211; list of base schemas</li>
+</ul>
+<p>You need these information to define REST API.
+Please see json schema specification <a class="reference external" href="http://json-schema.org/">http://json-schema.org/</a></p>
+<p>Note that each resource must have unique &#8220;id&#8221; attribute for identity for the
+each resources. You should also define &#8220;tenant_id&#8221; attribute if you want to
+use owner-based access control described in policy section later. In case
+no tenant_id is specified and owner-based access control is not enabled,
+tenant_id will be assigned based on the authentication token used.</p>
+<p>&#8220;singular&#8221; and &#8220;plural&#8221; attributes are used for wrapping returned resources
+in additional dictionary during show and list calls respectively.
+&#8220;plural&#8221; is also used during access URL constructions.</p>
+<p>Namespace is an optional parameter that can be used to group schemas. If
+a namespace has been specified, full namespace prefix will be prepended to the
+schema prefix- see <a class="reference internal" href="namespace.html#section-namespace"><span class="std std-ref">namespace section</span></a> for details.</p>
+<p>You can use following properties in json schema.</p>
+</div>
+<div class="section" id="schema-inheritance">
+<h2>Schema Inheritance<a class="headerlink" href="#schema-inheritance" title="Permalink to this headline">¶</a></h2>
+<p>You can define an abstract schema by setting type=&#8221;abstract&#8221;.
+Schemas can be derived from an abstract schema by using the keyword &#8220;extends&#8221;.
+JSON schema, metadata and action will be merged when a schema is extended.
+prefix value and parent value will be set if not specified.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">schemas</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">base</span>
+  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">abstract</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">base</span>
+  <span class="l-Scalar-Plain">metadata</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">state_versioning</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">true</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">bases</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v2.0</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Description</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Description</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ID</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ID</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">tenant_id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Tenant ID</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Tenant</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="l-Scalar-Plain">propertiesOrder</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">tenant_id</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">base</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">base</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Network</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">network</span>
+  <span class="l-Scalar-Plain">extends</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">base</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">networks</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">providor_networks</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Providor networks</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">segmentaion_type</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vlan</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vxlan</span>
+            <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">gre</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+          <span class="l-Scalar-Plain">segmentation_id</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Provider Networks</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">route_targets</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Route targets</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+        <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">RouteTargets</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">shared</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Shared</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Shared</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">boolean</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+    <span class="l-Scalar-Plain">propertiesOrder</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">providor_networks</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">route_targets</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">shared</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">network</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Network</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">type (string)</p>
+<p>you can specify schema type. For example, gohan-webui will use
+this value to determine wheather we show this schema link in the side menu</p>
+</li>
+<li><p class="first">nosync (boolean)</p>
+<p>if nosync is true, we don&#8217;t sync this resource for sync backend.</p>
+</li>
+<li><p class="first">state_versioning (boolean)</p>
+<p>whether to support <a class="reference internal" href="sync.html#subsection-state-update"><span class="std std-ref">state versioning</span></a>, defaults to false.</p>
+</li>
+<li><p class="first">sync_key_template (string)</p>
+<p>configurable sync key path for schemas based on properties, for example: /v1.0/devices/{{device_id}}/virtual_machine/{{id}},
+it must contain &#8216;{{id}}&#8217;</p>
+</li>
+</ul>
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<p>We need to define properties of resource using following parameters.</p>
+<ul>
+<li><p class="first">title</p>
+<p>User visible label of the property</p>
+</li>
+<li><p class="first">format</p>
+<p>Additional validation hint for this property
+you can use defined attribute on <a class="reference external" href="http://json-schema.org/latest/json-schema-validation.html#anchor107">http://json-schema.org/latest/json-schema-validation.html#anchor107</a></p>
+</li>
+<li><p class="first">type</p>
+<p>properties type.
+you can select from (string, number, integer, boolean, array and object)
+Note that schema itself should be object type.
+This can also be a two element list in case, attribute can be specified as null, e.g. [&#8220;string&#8221;, &#8220;null&#8221;]</p>
+</li>
+<li><p class="first">default</p>
+<p>defualt value of the property</p>
+</li>
+<li><p class="first">enum</p>
+<p>You can specify list of allowed values</p>
+</li>
+<li><p class="first">required</p>
+<p>List of required attributes to specified during creation</p>
+</li>
+</ul>
+<p>Following properties are extended from json schema v4.</p>
+<ul>
+<li><p class="first">permission</p>
+<p>permission is a list of allow actions for this property.
+valid values contrains &#8220;create&#8221;, &#8220;update&#8221;.
+Gohan generates json schema for craete API and update API based on this value.
+Note that we can use this property for only first level properties.</p>
+</li>
+<li><p class="first">unique boolean (unique key constraint)</p>
+</li>
+<li><p class="first">detail (array)</p>
+<p>This parameter will be used in user side. Possible values are strings including read, create, delete, list, update.</p>
+</li>
+</ul>
+</div>
+<div class="section" id="type-string">
+<h2>type string<a class="headerlink" href="#type-string" title="Permalink to this headline">¶</a></h2>
+<p>type string is for defining string.
+You can use following parameters for string.</p>
+<ul class="simple">
+<li>minLength  max length of string</li>
+<li>maxLength  min length of string</li>
+<li>pattern    regexp pattern for this string</li>
+<li>relation  (gohan extened property)  define resource relation</li>
+<li>relation_property  (gohan extened property) relation resource will be joined in list api requiest for this property name</li>
+<li>on_delete_cascade  (gohan extened property) cascading delete when related resource get deleted</li>
+</ul>
+<p>eg.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+  <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="type-boolean">
+<h2>type boolean<a class="headerlink" href="#type-boolean" title="Permalink to this headline">¶</a></h2>
+<p>type boolean for boolean value</p>
+<p>eg.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">admin_state</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">admin_state</span>
+  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">boolean</span>
+  <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="type-integer-or-type-number">
+<h2>type integer or type number<a class="headerlink" href="#type-integer-or-type-number" title="Permalink to this headline">¶</a></h2>
+<p>type integer or type number for numetric properties.
+You can use following parmeters to define valid range</p>
+<ul class="simple">
+<li>maximum (number) and exclusiveMaximum (boolean)</li>
+<li>minimum (number) and exclusiveMinimum (boolean)</li>
+</ul>
+<p>eg.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">age</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">age</span>
+  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">number</span>
+  <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="type-array">
+<h2>type array<a class="headerlink" href="#type-array" title="Permalink to this headline">¶</a></h2>
+<p>type array is for defining list of elements</p>
+<ul>
+<li><p class="first">items</p>
+<p>Only allowed for array type
+You can define element type on this property.</p>
+</li>
+</ul>
+<p>eg.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">route_targets</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="p-Indicator">[]</span>
+  <span class="l-Scalar-Plain">items</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+  <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">RouteTargets</span>
+  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">array</span>
+  <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="type-object">
+<h2>type object<a class="headerlink" href="#type-object" title="Permalink to this headline">¶</a></h2>
+<p>Object type is for defining object in the resources.
+Note that resource itself should be an object.
+following parameters supported in object type.</p>
+<ul>
+<li><p class="first">properties</p>
+<p>Only allowed for object type
+You can define properties of this object</p>
+</li>
+<li><p class="first">propertiesOrder (extended parameter in gohan)</p>
+<p>Only allowed for object type
+JSON has no ordering on object key. This could be problematic if you want to
+generate UI. so you can define ordering of properties using propertiesOrder</p>
+</li>
+</ul>
+<p>eg.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">providor_networks</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="p-Indicator">{}</span>
+  <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+  <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">segmentaion_type</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">enum</span><span class="p-Indicator">:</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vlan</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">vxlan</span>
+      <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">gre</span>
+      <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+    <span class="l-Scalar-Plain">segmentation_id</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">minimum</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">0</span>
+      <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">integer</span>
+  <span class="l-Scalar-Plain">required</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">segmentation_type</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">segmentation_id</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Provider Networks</span>
+  <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="parent-child-relationship">
+<h2>Parent - child relationship<a class="headerlink" href="#parent-child-relationship" title="Permalink to this headline">¶</a></h2>
+<p>Resources can be a in parent - child relationship. It means that the child resource has a foreign key to its parent.</p>
+<p>Note that there is no need to create &lt;parent&gt;_id property in child schema, it is added automatically when the schema is loaded to gohan.</p>
+<p>eg.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">schemas</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Test Device</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">test_device</span>
+  <span class="l-Scalar-Plain">parent</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">test_device</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">test_devices</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v1.0</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ID</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+    <span class="l-Scalar-Plain">required</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">segmentation_type</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">segmentation_id</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Test Device</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Test Physical Port</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">test_port</span>
+  <span class="l-Scalar-Plain">parent</span><span class="p-Indicator">:</span> <span class="s">&quot;test_device&quot;</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">test_port</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">test_ports</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v1.0</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ID</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+    <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+  <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Test Physical Port</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-actions-schema">
+<h2>Custom actions schema<a class="headerlink" href="#custom-actions-schema" title="Permalink to this headline">¶</a></h2>
+<p>Resources can have custom actions, beside CRUD. In order to define them, add actions section and define jsonschema
+of allowed input format</p>
+<p>eg.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">schemas</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Server</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">server</span>
+  <span class="l-Scalar-Plain">parent</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+  <span class="l-Scalar-Plain">singular</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">server</span>
+  <span class="l-Scalar-Plain">plural</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">server</span>
+  <span class="l-Scalar-Plain">prefix</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v1.0</span>
+  <span class="l-Scalar-Plain">schema</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">name</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Name</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">management_ip</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">default</span><span class="p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ipv4</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">update</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Management IP</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">unique</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">false</span>
+      <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">permission</span><span class="p-Indicator">:</span>
+        <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">create</span>
+        <span class="l-Scalar-Plain">title</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">ID</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+        <span class="l-Scalar-Plain">format</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">uuid</span>
+  <span class="l-Scalar-Plain">actions</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">reboot</span><span class="p-Indicator">:</span>
+      <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/:id/reboot</span>
+      <span class="l-Scalar-Plain">method</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">POST</span>
+      <span class="l-Scalar-Plain">input</span><span class="p-Indicator">:</span>
+        <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">object</span>
+        <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+          <span class="l-Scalar-Plain">message</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+          <span class="l-Scalar-Plain">delay</span><span class="p-Indicator">:</span>
+            <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">string</span>
+      <span class="l-Scalar-Plain">output</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">null</span>
+</pre></div>
+</div>
+<p>Then, register extension to handle it, e.g.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">gohan_register_handler</span><span class="p">(</span><span class="s2">&quot;action_reboot&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">context</span><span class="p">){</span>
+  <span class="c1">// handle reboot in southbound</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>In order to query above action, POST to /v1.0/servers/:id/action with</p>
+<div class="highlight-json"><div class="highlight"><pre><span class="p">{</span>
+  <span class="nt">&quot;reboot&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;Maintenance&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;delay&quot;</span><span class="p">:</span> <span class="s2">&quot;1h&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-isolation-level">
+<h2>Custom Isolation Level<a class="headerlink" href="#custom-isolation-level" title="Permalink to this headline">¶</a></h2>
+<p>You can specify the transaction isolation level for api requests.
+Currently, this is only supported for mysql.
+The default setting is &#8220;read repeatable&#8221; for read operations and &#8220;serializable&#8221; for
+operations that modify the database (create, update, delete) and sync operations
+(state_update, monitoring_update). The default for unspecified action is repeatable read.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">isolation_level</span><span class="p-Indicator">:</span>
+  <span class="l-Scalar-Plain">read</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">REPEATABLE READ</span>
+  <span class="l-Scalar-Plain">create</span><span class="p-Indicator">:</span>  <span class="l-Scalar-Plain">SERIALIZABLE</span>
+  <span class="l-Scalar-Plain">update</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">SERIALIZABLE</span>
+  <span class="l-Scalar-Plain">delete</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">SERIALIZABLE</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="openapi-swagger">
+<h2>OpenAPI / Swagger<a class="headerlink" href="#openapi-swagger" title="Permalink to this headline">¶</a></h2>
+<p>Gohan schema is supposed to define &#8220;Data Model&#8221;, whereus OpenAPI/Swagger
+is supposed to define &#8220;API&#8221;.</p>
+<p>You can generate OpenAPI / Swagger file from gohan schema, so that you can
+afford swagger utility tools.</p>
+<div class="highlight-shell"><div class="highlight"><pre>gohan openapi --config-file etc/gohan.yaml
+
+<span class="c"># or you can customize template file using</span>
+
+gohan openapi --config-file etc/gohan.yaml --template etc/templates/swagger.tmpl
+</pre></div>
+</div>
+<p>then you will get swagger.json.
+You can use this file for using swagger utility tools.</p>
+<p>For example, you can use go-swagger to generate go related code. (see <a class="reference external" href="http://goswagger.io/">http://goswagger.io/</a>)</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>swagger validate swagger.json
+The swagger spec at <span class="s2">&quot;swagger.json&quot;</span> is valid against swagger specification 2.0
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="commands.html" class="btn btn-neutral float-right" title="Gohan Commands" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="config.html" class="btn btn-neutral" title="Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 NTT Innovation Institute, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

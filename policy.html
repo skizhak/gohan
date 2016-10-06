@@ -1,0 +1,329 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Policy &mdash; Gohan 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/gohan.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Gohan 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="Extension" href="extension.html"/>
+        <link rel="prev" title="Sync with backend" href="sync.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+<body class="wy-body-for-nav" role="document">
+  <header class="gohan_header">
+    <div class="logo"><a href="/"><img width="103" height="30" src="_static/img/gh-logo-color.png"></a></div>
+    <div class="nav">
+      <ul>
+        <li><a href="https://github.com/cloudwan/gohan#getting-started">Getting started</a></li>
+        <li><a href="http://cloudwan.github.io/gohan/">Docs</a></li>
+        <li><a href="https://github.com/cloudwan/gohan" style="font-weight: bold">
+          <span class="fa fa-github"></span>
+          Github</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gohan
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Gohan Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Gohan Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sync.html">Sync with backend</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Policy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#conditions">Conditions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">Namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking Tips</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Gohan</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Policy</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/policy.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="policy">
+<h1>Policy<a class="headerlink" href="#policy" title="Permalink to this headline">¶</a></h1>
+<p>You can configure API access policy using this resource.
+Policy has following properties.</p>
+<ul class="simple">
+<li>id : Identitfy of the policy</li>
+<li>principal : Keystone Role</li>
+<li>action: one of <cite>create</cite>, <cite>read</cite>, <cite>update</cite>, <cite>delete</cite> for CRUD operations
+on resource or any custom actions defined by schema performed on a
+resource or <cite>*</cite> for all actions</li>
+<li>effect : Allow api access or not</li>
+<li>resource : target resource
+you can specify target resource using &#8220;path&#8221; and &#8220;properties&#8221;</li>
+<li>condition : additional condition (see below)</li>
+<li>tenant_id : regexp matching the tenant, defaults to <code class="docutils literal"><span class="pre">.*</span></code></li>
+</ul>
+<div class="section" id="conditions">
+<h2>Conditions<a class="headerlink" href="#conditions" title="Permalink to this headline">¶</a></h2>
+<p>Gohan supports several types of conditions</p>
+<ul>
+<li><p class="first"><code class="code docutils literal"><span class="pre">is_owner</span></code> - Gohan will enforce access privileges for the resources
+specified in the policy. By default access to resources of all other tenants
+will be blocked.</p>
+</li>
+<li><p class="first"><code class="code docutils literal"><span class="pre">type:</span> <span class="pre">belongs_to</span></code> - Gohan will apply the policy if the user tries
+to access resources belonging to the tenant specified in condition (see the
+example below). The condition has no effect if the access privileges are not
+enforced by specifying the <code class="code docutils literal"><span class="pre">is_owner</span></code> condition. The full condition
+looks like:</p>
+<ul>
+<li><p class="first"><code class="code docutils literal"><span class="pre">action:</span> <span class="pre">(*|create|read|update|delete)</span></code></p>
+<p><code class="code docutils literal"><span class="pre">tenant_id:</span> <span class="pre">8bab8453-1bc9-45af-8c70-f83aa9b50453</span></code></p>
+<p><code class="code docutils literal"><span class="pre">type:</span> <span class="pre">belongs_to</span></code></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Example policy</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span class="l-Scalar-Plain">policies</span><span class="p-Indicator">:</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">action</span><span class="p-Indicator">:</span> <span class="s">&#39;*&#39;</span>
+  <span class="l-Scalar-Plain">effect</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">allow</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">admin_statement</span>
+  <span class="l-Scalar-Plain">principal</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">admin</span>
+  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">.*</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">action</span><span class="p-Indicator">:</span> <span class="s">&#39;read&#39;</span>
+  <span class="l-Scalar-Plain">condition</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">is_owner</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">type</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">belongs_to</span>
+    <span class="l-Scalar-Plain">action</span><span class="p-Indicator">:</span> <span class="s">&#39;*&#39;</span>
+    <span class="l-Scalar-Plain">tenant_id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">8bab8453-1bc9-45af-8c70-f83aa9b50453</span>
+  <span class="l-Scalar-Plain">effect</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">allow</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">member_statement</span>
+  <span class="l-Scalar-Plain">principal</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Member</span>
+  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v2.0/network/[^/]+/?$</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">action</span><span class="p-Indicator">:</span> <span class="s">&#39;*&#39;</span>
+  <span class="l-Scalar-Plain">condition</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">is_owner</span>
+  <span class="l-Scalar-Plain">effect</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">allow</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">member_statement2</span>
+  <span class="l-Scalar-Plain">principal</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Member</span>
+  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v2.0/networks/?$</span>
+    <span class="l-Scalar-Plain">properties</span><span class="p-Indicator">:</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">id</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">description</span>
+    <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">name</span>
+<span class="p-Indicator">-</span> <span class="l-Scalar-Plain">action</span><span class="p-Indicator">:</span> <span class="s">&#39;reboot&#39;</span>
+  <span class="l-Scalar-Plain">condition</span><span class="p-Indicator">:</span>
+  <span class="p-Indicator">-</span> <span class="l-Scalar-Plain">is_owner</span>
+  <span class="l-Scalar-Plain">effect</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">allow</span>
+  <span class="l-Scalar-Plain">id</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">member_statement2</span>
+  <span class="l-Scalar-Plain">principal</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">Member</span>
+  <span class="l-Scalar-Plain">resource</span><span class="p-Indicator">:</span>
+    <span class="l-Scalar-Plain">path</span><span class="p-Indicator">:</span> <span class="l-Scalar-Plain">/v2.0/server/?$</span>
+</pre></div>
+</div>
+<ul>
+<li><table class="first docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">code:</th><td class="field-body">type <cite>property</cite> - You can add condition based on resource value.</td>
+</tr>
+</tbody>
+</table>
+<p>You can specify allowed values in match.
+if it is a value, we check exact match.
+if it is a list, we check if the value is in the list
+if it is a dict, we check if we have a key for this value and, updated value matches it.
+Note that this is only valid for update action.</p>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="extension.html" class="btn btn-neutral float-right" title="Extension" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="sync.html" class="btn btn-neutral" title="Sync with backend" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 NTT Innovation Institute, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

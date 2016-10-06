@@ -1,0 +1,473 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gohan Commands &mdash; Gohan 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/gohan.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Gohan 0.0.1 documentation" href="index.html"/>
+        <link rel="next" title="API" href="api.html"/>
+        <link rel="prev" title="Gohan Schema" href="schema.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+<body class="wy-body-for-nav" role="document">
+  <header class="gohan_header">
+    <div class="logo"><a href="/"><img width="103" height="30" src="_static/img/gh-logo-color.png"></a></div>
+    <div class="nav">
+      <ul>
+        <li><a href="https://github.com/cloudwan/gohan#getting-started">Getting started</a></li>
+        <li><a href="http://cloudwan.github.io/gohan/">Docs</a></li>
+        <li><a href="https://github.com/cloudwan/gohan" style="font-weight: bold">
+          <span class="fa fa-github"></span>
+          Github</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gohan
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Gohan Schema</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Gohan Commands</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#validate">Validate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#template">Template</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openapi">OpenAPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#markdown">MarkDown</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cli-client">CLI Client</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#keystone">Keystone</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#endpoint">Endpoint</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#schemas">Schemas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#usage">Usage</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#schema-id">Schema_id</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#command">Command</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#arguments">Arguments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#resource-identifier">Resource identifier</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#custom-commands">Custom commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sync.html">Sync with backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="policy.html">Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">Namespace</a></li>
+<li class="toctree-l1"><a class="reference internal" href="benchmark.html">Benchmarking Tips</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Gohan</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Gohan Commands</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/commands.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gohan-commands">
+<h1>Gohan Commands<a class="headerlink" href="#gohan-commands" title="Permalink to this headline">¶</a></h1>
+<p>Run <code class="docutils literal"><span class="pre">gohan</span> <span class="pre">-h</span></code> to list available commands</p>
+<div class="highlight-shell"><div class="highlight"><pre>NAME:
+   gohan - Gohan
+
+USAGE:
+   gohan <span class="o">[</span>global options<span class="o">]</span> <span class="nb">command</span> <span class="o">[</span><span class="nb">command </span>options<span class="o">]</span> <span class="o">[</span>arguments...<span class="o">]</span>
+
+VERSION:
+   0.0.0
+
+COMMANDS:
+   validate, v          Validate Json Schema file
+   init-db, id          Init DB
+   convert, conv        Convert DB
+   server, srv          Run API Server
+   <span class="nb">help</span>, h              Shows a list of commands or <span class="nb">help </span><span class="k">for</span> one <span class="nb">command</span>
+
+GLOBAL OPTIONS:
+   --version, -v        print the version
+   --help, -h           show <span class="nb">help</span>
+</pre></div>
+</div>
+<div class="section" id="validate">
+<h2>Validate<a class="headerlink" href="#validate" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre>NAME:
+   validate - Validate Json Schema file
+
+USAGE:
+   <span class="nb">command </span>validate <span class="o">[</span><span class="nb">command </span>options<span class="o">]</span> <span class="o">[</span>arguments...<span class="o">]</span>
+
+DESCRIPTION:
+
+
+OPTIONS:
+   --schema, -s <span class="s1">&#39;../schema/core.json&#39;</span>   Json schema path
+   --json, -i <span class="s1">&#39;../example/example.json&#39;</span> json path
+</pre></div>
+</div>
+</div>
+<div class="section" id="template">
+<h2>Template<a class="headerlink" href="#template" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre>NAME:
+    template - Convert gohan schema using pongo2 template
+
+USAGE:
+    <span class="nb">command </span>template <span class="o">[</span><span class="nb">command </span>options<span class="o">]</span> <span class="o">[</span>arguments...<span class="o">]</span>
+
+DESCRIPTION:
+    Convert gohan schema using pongo2 template
+
+OPTIONS:
+    --config-file <span class="s2">&quot;gohan.yaml&quot;</span>      Server config File
+    --template, -t          Template File
+</pre></div>
+</div>
+</div>
+<div class="section" id="openapi">
+<h2>OpenAPI<a class="headerlink" href="#openapi" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre>NAME:
+    openapi - Convert gohan schema to OpenAPI
+
+USAGE:
+    <span class="nb">command </span>openapi <span class="o">[</span><span class="nb">command </span>options<span class="o">]</span> <span class="o">[</span>arguments...<span class="o">]</span>
+
+DESCRIPTION:
+    Convert gohan schema to OpenAPI
+
+OPTIONS:
+    --config-file <span class="s2">&quot;gohan.yaml&quot;</span>                              Server config File
+    --template, -t <span class="s2">&quot;embed://etc/templates/openapi.tmpl&quot;</span>     Template File
+</pre></div>
+</div>
+</div>
+<div class="section" id="markdown">
+<h2>MarkDown<a class="headerlink" href="#markdown" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre>NAME:
+    markdown - Convert gohan schema using pongo2 template
+
+USAGE:
+    <span class="nb">command </span>markdown <span class="o">[</span><span class="nb">command </span>options<span class="o">]</span> <span class="o">[</span>arguments...<span class="o">]</span>
+
+DESCRIPTION:
+    Convert gohan schema using pongo2 template
+
+OPTIONS:
+    --config-file <span class="s2">&quot;gohan.yaml&quot;</span>                              Server config File
+    --template, -t <span class="s2">&quot;embed://etc/templates/markdown.tmpl&quot;</span>    Template File
+</pre></div>
+</div>
+</div>
+<div class="section" id="cli-client">
+<h2>CLI Client<a class="headerlink" href="#cli-client" title="Permalink to this headline">¶</a></h2>
+<p>You can use gohan client command to connect to gohan.</p>
+<p>Gohan client will show quick help for sub command for current
+server schema.</p>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Gohan CLI Client is configured though environment variables. Configuration can be divided into few sections.</p>
+<p>You can use default configuraion for client with:
+<code class="code docutils literal"><span class="pre">source</span> <span class="pre">./etc/gohan_client.rc</span></code></p>
+<div class="section" id="keystone">
+<h4>Keystone<a class="headerlink" href="#keystone" title="Permalink to this headline">¶</a></h4>
+<p>To configure keystone access for Gohan Client CLI, only few options should be set (they are compatible with those
+from rackspace/gophercloud:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">OS_AUTH_URL</span></code> - keystone url</li>
+<li><code class="code docutils literal"><span class="pre">OS_USERNAME</span></code> - keystone username</li>
+<li><code class="code docutils literal"><span class="pre">OS_PASSWORD</span></code> - keystone password</li>
+<li><code class="code docutils literal"><span class="pre">OS_TENANT_NAME</span></code> or <code class="code docutils literal"><span class="pre">OS_TENANT_ID</span></code> - keystone tenant name or id</li>
+<li><code class="code docutils literal"><span class="pre">OS_DOMAIN_NAME</span></code> or <code class="code docutils literal"><span class="pre">OS_DOMAIN_ID</span></code> - keystone domain name or id (for keystone v3 only)</li>
+<li><code class="code docutils literal"><span class="pre">OS_TOKEN_ID</span></code> - token ID used to authenticate requests</li>
+</ul>
+</div>
+<div class="section" id="endpoint">
+<h4>Endpoint<a class="headerlink" href="#endpoint" title="Permalink to this headline">¶</a></h4>
+<p>Gohan enpoint url can be specified directly or Gohan Client can get it from configured keystone.</p>
+<p>To specify endpoint directly, just set <code class="code docutils literal"><span class="pre">GOHAN_ENDPOINT_URL</span></code> to proper url.</p>
+<p>When using keystone:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">GOHAN_SERVICE_NAME</span></code> - Gohan service name in keystone</li>
+<li><code class="code docutils literal"><span class="pre">GOHAN_REGION</span></code> - Gohan region name in keystone</li>
+</ul>
+<p><strong>Note:</strong> setting all above options will result in using <code class="code docutils literal"><span class="pre">GOHAN_ENDPOINT_URL</span></code>!</p>
+</div>
+<div class="section" id="schemas">
+<h4>Schemas<a class="headerlink" href="#schemas" title="Permalink to this headline">¶</a></h4>
+<p>Gohan CLI Client is fetching available schemas from Gohan endpoint and can cache them in temp file for performance:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">GOHAN_SCHEMA_URL</span></code> - Gohan schema url</li>
+<li><code class="code docutils literal"><span class="pre">GOHAN_CACHE_SCHEMAS</span></code> - should cache schemas (default - true)</li>
+<li><code class="code docutils literal"><span class="pre">GOHAN_CACHE_TIMEOUT</span></code> - how long cache is valid, uses 1h20m10s format (default - 5m)</li>
+<li><code class="code docutils literal"><span class="pre">GOHAN_CACHE_PATH</span></code> - where to store cache schemas (default - <code class="code docutils literal"><span class="pre">/tmp/.cached_gohan_schemas</span></code>)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="usage">
+<h3>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h3>
+<p>Usage can be briefly described with:</p>
+<p><code class="code docutils literal"><span class="pre">gohan</span> <span class="pre">client</span> <span class="pre">schema_id</span> <span class="pre">command</span> <span class="pre">[arguments...]</span> <span class="pre">[resource_identifier]</span></code></p>
+<p>Each part of above command is described below.</p>
+<div class="section" id="schema-id">
+<h4>Schema_id<a class="headerlink" href="#schema-id" title="Permalink to this headline">¶</a></h4>
+<p><code class="code docutils literal"><span class="pre">schema_id</span></code> determines which resource type we want to manage.</p>
+<p>If used <code class="code docutils literal"><span class="pre">schema_id</span></code> is not defined in Gohan, Gohan CLI Client will return <code class="code docutils literal"><span class="pre">Command</span> <span class="pre">not</span> <span class="pre">found</span></code> error.</p>
+</div>
+<div class="section" id="command">
+<h4>Command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h4>
+<p>Commands are identical for each resources:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">list</span></code> - List all resources</li>
+<li><code class="code docutils literal"><span class="pre">show</span></code> - Show resource details</li>
+<li><code class="code docutils literal"><span class="pre">create</span></code> - Create resource</li>
+<li><code class="code docutils literal"><span class="pre">set</span></code> - Update existing resource</li>
+<li><code class="code docutils literal"><span class="pre">delete</span></code> - Delete resource</li>
+</ul>
+</div>
+<div class="section" id="arguments">
+<h4>Arguments<a class="headerlink" href="#arguments" title="Permalink to this headline">¶</a></h4>
+<p>Arguments should be specified in <code class="code docutils literal"><span class="pre">--name</span> <span class="pre">value</span></code> format.</p>
+<p>Passing JSON null value: <code class="code docutils literal"><span class="pre">--name</span> <span class="pre">&quot;&lt;null&gt;&quot;</span></code></p>
+<p>Passing JSON not null value: <code class="code docutils literal"><span class="pre">--name</span> <span class="pre">'{&quot;name&quot;:</span> <span class="pre">[{&quot;name&quot;:</span> <span class="pre">&quot;value&quot;},</span> <span class="pre">{&quot;name&quot;:</span> <span class="pre">&quot;value&quot;}]}'</span></code></p>
+<p><strong>Common arguments</strong></p>
+<p>In addition to resource related commands, some formatting commands are available:</p>
+<ul>
+<li><p class="first"><code class="code docutils literal"><span class="pre">--output-format</span> <span class="pre">[json/table]</span></code> - specifies in which format results should be shown. Can also be specified with <code class="code docutils literal"><span class="pre">GOHAN_OUTPUT_FORMAT</span></code> environment variable.</p>
+<ul>
+<li><p class="first"><code class="code docutils literal"><span class="pre">json</span></code>, e.g:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Resource name&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Resource very long and meaningful description&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;some_list&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="s2">&quot;list_element_1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;list_element_2&quot;</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first"><code class="code docutils literal"><span class="pre">table</span></code>, e.g:</p>
+<div class="highlight-shell"><div class="highlight"><pre>+-------------+--------------------------------------+
+<span class="p">|</span>    FIELD    <span class="p">|</span>               TYPE                   <span class="p">|</span>
++-------------+--------------------------------------+
+<span class="p">|</span> name        <span class="p">|</span> Resource name                        <span class="p">|</span>
+<span class="p">|</span> description <span class="p">|</span> Resource description                 <span class="p">|</span>
+<span class="p">|</span> some_list   <span class="p">|</span> <span class="o">[</span><span class="s2">&quot;list_element_1&quot;</span>, <span class="s2">&quot;list_element_2&quot;</span><span class="o">]</span> <span class="p">|</span>
++-------------+--------------------------------------+
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first"><code class="code docutils literal"><span class="pre">--verbosity</span> <span class="pre">[0-3]</span></code> - specifies how much information Gohan Client should show - handy for dubugging. Can also be specified with <code class="code docutils literal"><span class="pre">GOHAN_VERBOSITY</span></code> environment variable.</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">0</span></code> - no additional debug information is shown</li>
+<li><code class="code docutils literal"><span class="pre">1</span></code> - Sent request url and method is shown</li>
+<li><code class="code docutils literal"><span class="pre">2</span></code> - same as level <code class="code docutils literal"><span class="pre">1</span></code> + request &amp; response body</li>
+<li><code class="code docutils literal"><span class="pre">3</span></code> - same as level <code class="code docutils literal"><span class="pre">2</span></code> + used auth token</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="resource-identifier">
+<h4>Resource identifier<a class="headerlink" href="#resource-identifier" title="Permalink to this headline">¶</a></h4>
+<p>Some commands (<code class="code docutils literal"><span class="pre">show,</span> <span class="pre">set,</span> <span class="pre">delete</span></code>) are executed on one resource only. To identify whis reource,
+it&#8217;s name or id could be used:</p>
+<div class="highlight-shell"><div class="highlight"><pre>gohan client network show network-id
+gohan client network show <span class="s2">&quot;Network Name&quot;</span>
+gohan client subnet create --network <span class="s2">&quot;Network Name&quot;</span>
+gohan client subnet create --network network-id
+gohan client subnet create --network_id network-id
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-commands">
+<h4>Custom commands<a class="headerlink" href="#custom-commands" title="Permalink to this headline">¶</a></h4>
+<p>Any custom actions specified in schema are also supported as commands by gohan client and should be invoked as follows:</p>
+<p><code class="code docutils literal"><span class="pre">gohan</span> <span class="pre">client</span> <span class="pre">schema_id</span> <span class="pre">command</span> <span class="pre">[common</span> <span class="pre">arguments]</span> <span class="pre">[command</span> <span class="pre">input]</span> <span class="pre">[resource</span> <span class="pre">identifier]</span></code></p>
+<p>Where <code class="code docutils literal"><span class="pre">common</span> <span class="pre">arguments</span></code> and <code class="code docutils literal"><span class="pre">resource</span> <span class="pre">identifier</span></code> are described aboved and <code class="code docutils literal"><span class="pre">command</span> <span class="pre">input</span></code> is passed as JSON value.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="API" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="schema.html" class="btn btn-neutral" title="Gohan Schema" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 NTT Innovation Institute, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

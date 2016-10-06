@@ -1,0 +1,328 @@
+
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Benchmarking Tips &mdash; Gohan 0.0.1 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/css/gohan.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="Gohan 0.0.1 documentation" href="index.html"/>
+        <link rel="prev" title="Namespace" href="namespace.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+<body class="wy-body-for-nav" role="document">
+  <header class="gohan_header">
+    <div class="logo"><a href="/"><img width="103" height="30" src="_static/img/gh-logo-color.png"></a></div>
+    <div class="nav">
+      <ul>
+        <li><a href="https://github.com/cloudwan/gohan#getting-started">Getting started</a></li>
+        <li><a href="http://cloudwan.github.io/gohan/">Docs</a></li>
+        <li><a href="https://github.com/cloudwan/gohan" style="font-weight: bold">
+          <span class="fa fa-github"></span>
+          Github</a></li>
+      </ul>
+    </div>
+  </header>
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Gohan
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="config.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Gohan Schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="commands.html">Gohan Commands</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sync.html">Sync with backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="policy.html">Policy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="extension.html">Extension</a></li>
+<li class="toctree-l1"><a class="reference internal" href="namespace.html">Namespace</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Benchmarking Tips</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-install">How to install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-server-configuraion">Sample Server Configuraion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sample-benchmark">Sample Benchmark</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Gohan</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Benchmarking Tips</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/benchmark.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="benchmarking-tips">
+<h1>Benchmarking Tips<a class="headerlink" href="#benchmarking-tips" title="Permalink to this headline">¶</a></h1>
+<p>We can use boom for benchmarking gohan.
+<a class="reference external" href="https://github.com/rakyll/boom">https://github.com/rakyll/boom</a></p>
+<div class="section" id="how-to-install">
+<h2>How to install<a class="headerlink" href="#how-to-install" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre>go get github.com/rakyll/boom
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-server-configuraion">
+<h2>Sample Server Configuraion<a class="headerlink" href="#sample-server-configuraion" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-shell"><div class="highlight"><pre>gohan server --config-file server/server_test_mysql_config.yaml
+</pre></div>
+</div>
+</div>
+<div class="section" id="sample-benchmark">
+<h2>Sample Benchmark<a class="headerlink" href="#sample-benchmark" title="Permalink to this headline">¶</a></h2>
+<p>Note: this benchmark result get done in my local laptop where benchmark client, server and
+database working. We need proper benchmark result in doc in future.</p>
+<p>POST</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>boom -n <span class="m">1000</span> -c <span class="m">100</span> -m POST -h <span class="s2">&quot;X-Auth-Token:admin_token&quot;</span> -d <span class="s1">&#39;{&quot;name&quot;: &quot;hoge&quot;, &quot;tenant_id&quot;: &quot;red&quot;}&#39;</span> http://localhost:19090/v2.0/networks/
+<span class="m">1000</span> / <span class="m">1000</span> Boooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo! 100.00 %
+
+Summary:
+  Total:      1.3190 secs.
+  Slowest:    0.1941 secs.
+  Fastest:    0.0104 secs.
+  Average:    0.1303 secs.
+  Requests/sec:       758.1509
+  Total Data Received:        <span class="m">213000</span> bytes.
+  Response Size per Request:  <span class="m">213</span> bytes.
+
+Status code distribution:
+  <span class="o">[</span>201<span class="o">]</span>       <span class="m">1000</span> responses
+
+Response <span class="nb">time </span>histogram:
+  0.010 <span class="o">[</span>1<span class="o">]</span>   <span class="p">|</span>
+  0.029 <span class="o">[</span>0<span class="o">]</span>   <span class="p">|</span>
+  0.047 <span class="o">[</span>0<span class="o">]</span>   <span class="p">|</span>
+  0.065 <span class="o">[</span>15<span class="o">]</span>  <span class="p">|</span>∎
+  0.084 <span class="o">[</span>21<span class="o">]</span>  <span class="p">|</span>∎∎
+  0.102 <span class="o">[</span>70<span class="o">]</span>  <span class="p">|</span>∎∎∎∎∎∎∎∎
+  0.121 <span class="o">[</span>183<span class="o">]</span> <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎
+  0.139 <span class="o">[</span>318<span class="o">]</span> <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎
+  0.157 <span class="o">[</span>311<span class="o">]</span> <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎
+  0.176 <span class="o">[</span>68<span class="o">]</span>  <span class="p">|</span>∎∎∎∎∎∎∎∎
+  0.194 <span class="o">[</span>13<span class="o">]</span>  <span class="p">|</span>∎
+
+Latency distribution:
+  10% in 0.1007 secs.
+  25% in 0.1175 secs.
+  50% in 0.1324 secs.
+  75% in 0.1447 secs.
+  90% in 0.1554 secs.
+  95% in 0.1649 secs.
+  99% in 0.1766 secs.
+</pre></div>
+</div>
+<p>Get 10 elements in list</p>
+<div class="highlight-shell"><div class="highlight"><pre><span class="nv">$ </span>boom -n <span class="m">1000</span> -c <span class="m">100</span> -m GET -h <span class="s2">&quot;X-Auth-Token:admin_token&quot;</span>  http://localhost:19090/v2.0/networks/?lit<span class="o">=</span>1
+<span class="m">1000</span> / <span class="m">1000</span> Boooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo! 100.00 %
+
+Summary:
+  Total:      1.3845 secs.
+  Slowest:    0.2075 secs.
+  Fastest:    0.0501 secs.
+  Average:    0.1357 secs.
+  Requests/sec:       722.3051
+  Total Data Received:        <span class="m">240000</span> bytes.
+  Response Size per Request:  <span class="m">240</span> bytes.
+
+Status code distribution:
+  <span class="o">[</span>200<span class="o">]</span>       <span class="m">1000</span> responses
+
+Response <span class="nb">time </span>histogram:
+  0.050 <span class="o">[</span>1<span class="o">]</span>   <span class="p">|</span>
+  0.066 <span class="o">[</span>11<span class="o">]</span>  <span class="p">|</span>∎
+  0.082 <span class="o">[</span>34<span class="o">]</span>  <span class="p">|</span>∎∎∎∎
+  0.097 <span class="o">[</span>63<span class="o">]</span>  <span class="p">|</span>∎∎∎∎∎∎∎∎
+  0.113 <span class="o">[</span>82<span class="o">]</span>  <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎
+  0.129 <span class="o">[</span>115<span class="o">]</span> <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎
+  0.145 <span class="o">[</span>287<span class="o">]</span> <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎
+  0.160 <span class="o">[</span>239<span class="o">]</span> <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎
+  0.176 <span class="o">[</span>138<span class="o">]</span> <span class="p">|</span>∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎∎
+  0.192 <span class="o">[</span>28<span class="o">]</span>  <span class="p">|</span>∎∎∎
+  0.208 <span class="o">[</span>2<span class="o">]</span>   <span class="p">|</span>
+
+Latency distribution:
+  10% in 0.0963 secs.
+  25% in 0.1224 secs.
+  50% in 0.1393 secs.
+  75% in 0.1549 secs.
+  90% in 0.1649 secs.
+  95% in 0.1720 secs.
+  99% in 0.1793 secs.
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="namespace.html" class="btn btn-neutral" title="Namespace" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015 NTT Innovation Institute, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
