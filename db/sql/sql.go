@@ -324,7 +324,7 @@ func (db *DB) genTableCols(s *schema.Schema, cascade bool, exclude []string) ([]
 				}
 			}
 		}
-		sql := "`" + property.ID + "` " + sqlDataType + sqlDataProperties
+		sql := "\n\t`" + property.ID + "` " + sqlDataType + sqlDataProperties
 
 		cols = append(cols, sql)
 		if property.Relation != "" {
@@ -342,7 +342,7 @@ func (db *DB) genTableCols(s *schema.Schema, cascade bool, exclude []string) ([]
 					relationColumn = property.RelationColumn
 				}
 
-				relations = append(relations, fmt.Sprintf("constraint %s foreign key(`%s`) REFERENCES `%s`(%s) %s",
+				relations = append(relations, fmt.Sprintf("\n\tconstraint %s foreign key(`%s`) REFERENCES `%s`(%s) %s",
 					quote(foreignKeyName(s.GetDbTableName(), property.ID, foreignSchema.GetDbTableName(), relationColumn)),
 					property.ID, foreignSchema.GetDbTableName(), relationColumn, cascadeString))
 			}
@@ -398,7 +398,7 @@ func (db *DB) GenTableDef(s *schema.Schema, cascade bool) (string, []string) {
 	}
 
 	cols = append(cols, relations...)
-	tableSQL := fmt.Sprintf("create table `%s` (%s);\n", s.GetDbTableName(), strings.Join(cols, ","))
+	tableSQL := fmt.Sprintf("create table `%s` (%s\n);\n", s.GetDbTableName(), strings.Join(cols, ","))
 	log.Debug("Creating table: " + tableSQL)
 	log.Debug("Creating indices: " + strings.Join(indices, ""))
 	return tableSQL, indices
